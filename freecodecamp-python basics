@@ -1,0 +1,58 @@
+# 1. Password Strength Checker
+def check_password(password):
+    if len(password) < 8:
+        return "Weak password: Use at least 8 characters."
+
+    if password.isalpha() or password.isdigit():
+        return "Medium password: Add numbers or special characters."
+
+    return "Strong password!"
+
+print(check_password("Cyber123!"))
+
+
+# 2. Suspicious Message Checker
+def check_message(message):
+    suspicious_words = [
+        "urgent",
+        "password",
+        "verify",
+        "click",
+        "account"
+    ]
+
+    for word in suspicious_words:
+        if word in message.lower():
+            return "Warning: This message may be suspicious!"
+
+    return "No suspicious words detected."
+
+print(check_message("Urgent! Verify your account now."))
+
+
+# 3. Caesar Cipher Encryption
+def encrypt_message(message, shift):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    result = ""
+
+    for character in message.lower():
+        if character in alphabet:
+            position = alphabet.index(character)
+            new_position = (position + shift) % 26
+            result += alphabet[new_position]
+        else:
+            result += character
+
+    return result
+
+encrypted = encrypt_message("hello world", 3)
+
+print("Encrypted message:", encrypted)
+
+
+# 4. Count Words in a Message
+def count_words(message):
+    words = message.split()
+    return len(words)
+
+print("Number of words:", count_words("Python is useful in cybersecurity"))
